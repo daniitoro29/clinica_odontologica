@@ -1,5 +1,6 @@
 package com.dh.clinica_odontologica.service.Impl;
 
+import com.dh.clinica_odontologica.exception.ResourceBadRequestException;
 import com.dh.clinica_odontologica.exception.ResourceNotFoundException;
 import com.dh.clinica_odontologica.repository.IOdontologoRepository;
 import com.dh.clinica_odontologica.service.IOdontologoServicio;
@@ -16,9 +17,12 @@ public class OdontologoServicioImp implements IOdontologoServicio {
     @Autowired
     private IOdontologoRepository iOdontologoRepository;
 
-
     @Override
     public Odontologo guardar(Odontologo odontologo) {
+        if (odontologo.getNombre() == null || odontologo.getNombre().isEmpty() || odontologo.getApellido() == null || odontologo.getApellido().isEmpty() ||  odontologo.getMatricula() == null || odontologo.getMatricula().isEmpty()) {
+            throw new ResourceBadRequestException("Por favor revise la informacion que está enviando, los datos deben estar completos");
+        }
+
         return iOdontologoRepository.save(odontologo);
     }
 
@@ -34,7 +38,13 @@ public class OdontologoServicioImp implements IOdontologoServicio {
 
     @Override
     public void eliminar(Long id) {
-       iOdontologoRepository.deleteById(id);
+        Optional<Odontologo> odontologoEliminado = iOdontologoRepository.findById(id);
+        if (odontologoEliminado.isPresent()) {
+            iOdontologoRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("El id " +id + " no existe");
+        }
+
     }
 
     @Override
