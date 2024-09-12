@@ -1,8 +1,6 @@
 window.addEventListener('load', function () {
     (function(){
 
-      //con fetch invocamos a la API de peliculas con el método GET
-      //nos devolverá un JSON con una colección de peliculas
       const url = '/odontologos';
       const settings = {
         method: 'GET'
@@ -11,17 +9,12 @@ window.addEventListener('load', function () {
       fetch(url,settings)
       .then(response => response.json())
       .then(data => {
-      //recorremos la colección de peliculas del JSON
          for(odontologo of data){
             var table = document.getElementById("odontologoTable");
             var odontologoRow =table.insertRow();
             let tr_id = 'tr_' + odontologo.id;
             odontologoRow.id = tr_id;
 
-            //armamos cada columna de la fila
-            //como primer columna pondremos el boton modificar
-            //luego los datos de la pelicula
-            //como ultima columna el boton eliminar
             odontologoRow.innerHTML = '<td class=\"td_id\">' + odontologo.id + '</td>' +
                     '<td class=\"td_nombre\">' + odontologo.nombre.toUpperCase() + '</td>' +
                     '<td class=\"td_apellido\">' + odontologo.apellido.toUpperCase() + '</td>' +

@@ -1,22 +1,24 @@
-document.getElementById("add_new_odontologo").onsubmit=function(e) {
-          e.preventDefault();
-          };
+document.getElementById("add_new_turno").onsubmit = function(e) {
+    e.preventDefault();
+};
 
 window.addEventListener('load', function () {
 
-    const formulario = document.querySelector('#add_new_odontologo');
+    const formulario = document.querySelector('#add_new_turno');
 
     formulario.addEventListener('submit', function (event) {
 
         const formData = {
-            nombre: document.querySelector('#nombre').value,
-            apellido: document.querySelector('#apellido').value,
-            matricula: document.querySelector('#matricula').value,
-
+            odontologo: {
+                id: document.querySelector('#odontologo_id').value,
+                nombre: document.querySelector('#nombre').value,
+                apellido: document.querySelector('#apellido').value,
+                matricula: document.querySelector('#matricula').value
+            },
+            fecha: document.querySelector('#fecha').value
         };
 
-
-        const url = '/odontologos';
+        const url = '/turnos';
         const settings = {
             method: 'POST',
             headers: {
@@ -30,7 +32,7 @@ window.addEventListener('load', function () {
         .then(data => {
                  let successAlert = '<div class="alert alert-success alert-dismissible">' +
                      '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                     '<strong></strong> Odontologo agregado </div>'
+                     '<strong></strong> Turno agregado correctamente</div>'
 
                  document.querySelector('#response').innerHTML = successAlert;
                  document.querySelector('#response').style.display = "block";
@@ -40,27 +42,28 @@ window.addEventListener('load', function () {
             .catch(error => {
                     let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
                                      '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                                     '<strong> Error intente nuevamente</strong> </div>'
+                                     '<strong>Error, intente nuevamente</strong> </div>'
 
                       document.querySelector('#response').innerHTML = errorAlert;
                       document.querySelector('#response').style.display = "block";
-                     resetUploadForm();})
+                     resetUploadForm();
+            });
     });
 
-
     function resetUploadForm(){
+        document.querySelector('#odontologo_id').value = "";
         document.querySelector('#nombre').value = "";
         document.querySelector('#apellido').value = "";
-         document.querySelector('#matricula').value = "";
-
+        document.querySelector('#matricula').value = "";
+        document.querySelector('#fecha').value = "";
     }
 
     (function(){
         let pathname = window.location.pathname;
         if(pathname === "/"){
-            document.querySelector(".nav .nav-item a:first").addClass("active");
-        } else if (pathname == "odontologoList.html") {
-            document.querySelector(".nav .nav-item a:last").addClass("active");
+            document.querySelector(".nav .nav-item a:first").classList.add("active");
+        } else if (pathname == "turnoList.html") {
+            document.querySelector(".nav .nav-item a:last").classList.add("active");
         }
     })();
 });
