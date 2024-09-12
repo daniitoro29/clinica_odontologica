@@ -1,5 +1,6 @@
 package com.dh.clinica_odontologica.service.Impl;
 
+import com.dh.clinica_odontologica.exception.ResourceNotFoundException;
 import com.dh.clinica_odontologica.repository.IOdontologoRepository;
 import com.dh.clinica_odontologica.service.IOdontologoServicio;
 import com.dh.clinica_odontologica.entity.Odontologo;
@@ -22,12 +23,12 @@ public class OdontologoServicioImp implements IOdontologoServicio {
     }
 
     @Override
-    public Odontologo buscarPorId(Long id) {
+    public Odontologo buscarPorId(Long id) throws  ResourceNotFoundException {
         Optional<Odontologo> odontologoBuscado  = iOdontologoRepository.findById(id);
         if (odontologoBuscado.isPresent()) {
             return odontologoBuscado.get();
         } else {
-            return null;
+            throw new ResourceNotFoundException("No se encontro el odontologo con id "+ id);
         }
     }
 

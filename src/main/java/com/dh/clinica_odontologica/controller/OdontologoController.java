@@ -1,6 +1,7 @@
 package com.dh.clinica_odontologica.controller;
 
 import com.dh.clinica_odontologica.entity.Odontologo;
+import com.dh.clinica_odontologica.exception.ResourceNotFoundException;
 import com.dh.clinica_odontologica.service.IOdontologoServicio;
 import com.dh.clinica_odontologica.service.Impl.OdontologoServicioImp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class OdontologoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Odontologo> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Odontologo> buscarPorId(@PathVariable Long id)  {
         return ResponseEntity.ok(odontologoServicio.buscarPorId(id));
     }
 
