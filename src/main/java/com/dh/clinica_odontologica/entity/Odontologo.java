@@ -1,12 +1,18 @@
-package com.dh.clinica_odontologica.modelo;
+package com.dh.clinica_odontologica.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "odontologos")
 public class Odontologo {
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nombre;
     private String apellido;
     private String matricula;
 
-    public Odontologo(Integer id, String nombre, String apellido, String matricula) {
+    public Odontologo(Long id, String nombre, String apellido, String matricula) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -17,11 +23,11 @@ public class Odontologo {
 
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

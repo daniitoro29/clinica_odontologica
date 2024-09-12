@@ -1,17 +1,20 @@
 package com.dh.clinica_odontologica.controller;
 
-import com.dh.clinica_odontologica.modelo.Odontologo;
-import com.dh.clinica_odontologica.servicio.IOdontologoServicio;
-import com.dh.clinica_odontologica.servicio.Impl.OdontologoServicioImp;
+import com.dh.clinica_odontologica.entity.Odontologo;
+import com.dh.clinica_odontologica.service.IOdontologoServicio;
+import com.dh.clinica_odontologica.service.Impl.OdontologoServicioImp;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/odontologos")
 
 public class OdontologoController {
+    @Autowired
     private IOdontologoServicio odontologoServicio;
 
     public OdontologoController(){
@@ -19,7 +22,7 @@ public class OdontologoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Odontologo> buscarPorId(@PathVariable Integer id) {
+    public ResponseEntity<Odontologo> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(odontologoServicio.buscarPorId(id));
     }
 
@@ -33,7 +36,7 @@ public class OdontologoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminarPorId(@PathVariable Integer id){
+    public ResponseEntity<Void> eliminarPorId(@PathVariable Long id){
         odontologoServicio.eliminar(id);
         return ResponseEntity.noContent().build();
     }
