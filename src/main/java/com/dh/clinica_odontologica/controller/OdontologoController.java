@@ -12,7 +12,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/odontologos")
-
 public class OdontologoController {
     @Autowired
     private IOdontologoServicio odontologoServicio;
