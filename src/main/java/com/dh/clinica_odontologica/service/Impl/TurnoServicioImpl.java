@@ -20,7 +20,7 @@ public class TurnoServicioImpl implements ITurnoServicio {
     @Override
     public Turno guardar(Turno turno) {
 
-        if (turno.getFecha() == null  || turno.getOdontologo() == null /* || turno.getPaciente() == null*/ ) {
+        if (turno.getFecha() == null  || turno.getOdontologo() == null  || turno.getPaciente() == null ) {
             System.out.println("Entro a la función *****");
             throw new ResourceBadRequestException("Por favor revise la informacion que está enviando, los datos deben estar completos");
         }

@@ -13,9 +13,9 @@ public class Turno {
     @ManyToOne
     @JoinColumn(name = "odontologo_id", nullable = false, referencedColumnName = "id")
     private Odontologo odontologo;
-/*    @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "paciente_id", nullable = false, referencedColumnName = "id")
-    private Paciente paciente;*/
+    private Paciente paciente;
     private LocalDate fecha;
 
     public Long getId() {
@@ -34,13 +34,13 @@ public class Turno {
         this.odontologo = odontologo;
     }
 
-/*    public Paciente getPaciente() {
+    public Paciente getPaciente() {
         return paciente;
     }
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
-    }*/
+    }
 
     public LocalDate getFecha() {
         return fecha;

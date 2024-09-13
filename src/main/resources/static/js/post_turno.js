@@ -12,9 +12,9 @@ window.addEventListener('load', function () {
             odontologo: {
                 id: document.querySelector('#odontologo_id').value,
             },
-/*            paciente: {
+            paciente: {
                 id: document.querySelector('#paciente_id').value,
-            },*/
+            },
             fecha: document.querySelector('#fecha').value
         };
 

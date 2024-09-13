@@ -10,7 +10,7 @@ window.addEventListener('load', function () {
         .then(response => response.json())
         .then(data => {
             let turnosTable = document.querySelector('#turnos-list');
-            turnosTable.innerHTML = '';
+            turnosTable.innerHTML = ''; // Limpiar el contenido existente
 
             data.forEach(turno => {
                 let turnoRow = `
@@ -21,6 +21,9 @@ window.addEventListener('load', function () {
                         <td>${turno.odontologo.apellido}</td>
                         <td>${turno.odontologo.matricula}</td>
                         <td>${turno.fecha}</td>
+                        <td>${turno.paciente.id}</td>
+                        <td>${turno.paciente.nombre}</td>
+                        <td>${turno.paciente.apellido}</td>
                     </tr>
                 `;
                 turnosTable.innerHTML += turnoRow;
@@ -37,5 +40,4 @@ window.addEventListener('load', function () {
     }
 
     getTurnos();
-
 });
