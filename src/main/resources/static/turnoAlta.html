@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Turnos</title>
+    <title>Agregar Turno</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -18,44 +18,61 @@
     </ul>
     <div class="row">
         <div class="col-sm-7" style="background-color:#e6fffa; padding:10px; border-radius:3px">
-            <h3>Agregar Turnos</h3>
+            <h3>Agregar Turno</h3>
             <form id="add_new_turno">
                 <div class="form-group">
-                    <label class="control-label" for="odontologo_id">Odontólogo ID:</label>
+                    <label class="control-label" for="odontologo_id">ID del Odontólogo:</label>
                     <input type="text" class="form-control" id="odontologo_id"
                            placeholder="Ingrese el ID del odontólogo"
-                           name="odontologo_id" required></input>
+                           name="odontologo_id" required/>
                 </div>
-
                 <div class="form-group">
-                    <label class="control-label" for="nombre">Nombre del odontólogo:</label>
-                    <input type="text" class="form-control" id="nombre"
+                    <label class="control-label" for="odontologo_nombre">Nombre del Odontólogo:</label>
+                    <input type="text" class="form-control" id="odontologo_nombre"
                            placeholder="Ingrese el nombre del odontólogo"
-                           name="nombre" required></input>
+                           name="odontologo_nombre" required/>
                 </div>
-
                 <div class="form-group">
-                    <label class="control-label" for="apellido">Apellido del odontólogo:</label>
-                    <input type="text" class="form-control" id="apellido"
+                    <label class="control-label" for="odontologo_apellido">Apellido del Odontólogo:</label>
+                    <input type="text" class="form-control" id="odontologo_apellido"
                            placeholder="Ingrese el apellido del odontólogo"
-                           name="apellido" required></input>
+                           name="odontologo_apellido" required/>
                 </div>
-
                 <div class="form-group">
-                    <label class="control-label" for="matricula">Matrícula del odontólogo:</label>
-                    <input type="text" class="form-control" id="matricula"
+                    <label class="control-label" for="odontologo_matricula">Matrícula del Odontólogo:</label>
+                    <input type="text" class="form-control" id="odontologo_matricula"
                            placeholder="Ingrese la matrícula del odontólogo"
-                           name="matricula" required></input>
+                           name="odontologo_matricula" required/>
                 </div>
-
                 <div class="form-group">
-                    <label class="control-label" for="fecha">Fecha del turno:</label>
-                    <input type="date" class="form-control" id="fecha"
-                           name="fecha" required></input>
+                    <label class="control-label" for="paciente_id">ID del Paciente:</label>
+                    <input type="text" class="form-control" id="paciente_id"
+                           placeholder="Ingrese el ID del paciente"
+                           name="paciente_id" required/>
                 </div>
-
-                <button type="submit" class="btn btn-danger"
-                        id="btn-add-new-turno">Guardar</button>
+                <div class="form-group">
+                    <label class="control-label" for="paciente_nombre">Nombre del Paciente:</label>
+                    <input type="text" class="form-control" id="paciente_nombre"
+                           placeholder="Ingrese el nombre del paciente"
+                           name="paciente_nombre" required/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="paciente_apellido">Apellido del Paciente:</label>
+                    <input type="text" class="form-control" id="paciente_apellido"
+                           placeholder="Ingrese el apellido del paciente"
+                           name="paciente_apellido" required/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="paciente_dni">DNI del Paciente:</label>
+                    <input type="text" class="form-control" id="paciente_dni"
+                           placeholder="Ingrese el DNI del paciente"
+                           name="paciente_dni" required/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="fecha">Fecha del Turno:</label>
+                    <input type="date" class="form-control" id="fecha" name="fecha" required/>
+                </div>
+                <button type="submit" class="btn btn-primary" id="btn-add-new-turno">Guardar</button>
             </form>
             <div id="response" style="display:none; margin-top:10px"></div>
         </div>

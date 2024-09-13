@@ -29,4 +29,10 @@ public class TurnoController {
     public ResponseEntity<List<Turno>> listarTodos() {
         return ResponseEntity.ok(iTurnoServicio.listarTodos());
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarPorId(@PathVariable Long id) {
+        iTurnoServicio.eliminar(id);
+        return ResponseEntity.noContent().build();
+    }
 }

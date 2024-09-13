@@ -19,7 +19,8 @@ public class TurnoServicioImpl implements ITurnoServicio {
 
     @Override
     public Turno guardar(Turno turno) {
-        if (turno.getFecha() == null  || turno.getOdontologo() == null ) {
+        System.out.println("Entro a la función *****");
+        if (turno.getFecha() == null  || turno.getOdontologo() == null || turno.getPaciente() == null ) {
             throw new ResourceBadRequestException("Por favor revise la informacion que está enviando, los datos deben estar completos");
         }
         return iTurnoRepository.save(turno);
@@ -38,5 +39,16 @@ public class TurnoServicioImpl implements ITurnoServicio {
     @Override
     public List<Turno> listarTodos() {
         return iTurnoRepository.findAll();
+    }
+
+    @Override
+    public void eliminar(Long id) {
+        Optional<Turno> turnoEliminado = iTurnoRepository.findById(id);
+        if (turnoEliminado.isPresent()) {
+            iTurnoRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("El id " +id + " no existe");
+        }
+
     }
 }
