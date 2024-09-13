@@ -9,7 +9,7 @@ window.addEventListener('load', function () {
         const formData = {
             nombre: document.querySelector('#nombre').value,
             apellido: document.querySelector('#apellido').value,
-            documento: document.querySelector('#documento').value,
+            dni: document.querySelector('#documento').value,
         };
 
         const url = '/pacientes';

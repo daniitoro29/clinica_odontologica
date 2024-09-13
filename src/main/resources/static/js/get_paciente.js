@@ -8,7 +8,6 @@ window.addEventListener('load', function () {
         fetch(url, settings)
             .then(response => response.json())
             .then(data => {
-
                 const table = document.getElementById("pacienteTable");
                 const tbody = table.querySelector("tbody");
                 tbody.innerHTML = '';
@@ -20,7 +19,7 @@ window.addEventListener('load', function () {
                     pacienteRow.innerHTML = `<td class="td_id">${paciente.id}</td>
                                              <td class="td_nombre">${paciente.nombre.toUpperCase()}</td>
                                              <td class="td_apellido">${paciente.apellido.toUpperCase()}</td>
-                                             <td class="td_documento">${paciente.documento}</td>
+                                             <td class="td_documento">${paciente.dni ? paciente.dni : 'N/A'}</td>
                                              <td>
                                                  <button class="btn btn-primary" onclick="editPaciente(${paciente.id})">Modificar</button>
                                                  <button class="btn btn-danger" onclick="deletePaciente(${paciente.id})">Eliminar</button>
