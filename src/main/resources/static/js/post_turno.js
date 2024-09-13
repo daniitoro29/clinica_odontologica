@@ -11,16 +11,10 @@ window.addEventListener('load', function () {
         const formData = {
             odontologo: {
                 id: document.querySelector('#odontologo_id').value,
-                nombre: document.querySelector('#odontologo_nombre').value,
-                apellido: document.querySelector('#odontologo_apellido').value,
-                matricula: document.querySelector('#odontologo_matricula').value
             },
-            paciente: {
+/*            paciente: {
                 id: document.querySelector('#paciente_id').value,
-                nombre: document.querySelector('#paciente_nombre').value,
-                apellido: document.querySelector('#paciente_apellido').value,
-                dni: document.querySelector('#paciente_dni').value
-            },
+            },*/
             fecha: document.querySelector('#fecha').value
         };
 
@@ -34,7 +28,14 @@ window.addEventListener('load', function () {
         };
 
         fetch(url, settings)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(errorData => {
+                    throw new Error(errorData.message || 'Error desconocido');
+                });
+            }
+            return response.json();
+        })
         .then(data => {
             let successAlert = '<div class="alert alert-success alert-dismissible">' +
                 '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
@@ -42,31 +43,17 @@ window.addEventListener('load', function () {
 
             document.querySelector('#response').innerHTML = successAlert;
             document.querySelector('#response').style.display = "block";
-            resetUploadForm();
-
         })
         .catch(error => {
             let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
                 '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                '<strong>Error, intente nuevamente</strong> </div>';
+                '<strong>Por favor verifique los datos ingresados.:</strong></div>';
 
             document.querySelector('#response').innerHTML = errorAlert;
             document.querySelector('#response').style.display = "block";
-            resetUploadForm();
         });
     });
 
-    function resetUploadForm() {
-        document.querySelector('#odontologo_id').value = "";
-        document.querySelector('#odontologo_nombre').value = "";
-        document.querySelector('#odontologo_apellido').value = "";
-        document.querySelector('#odontologo_matricula').value = "";
-        document.querySelector('#paciente_id').value = "";
-        document.querySelector('#paciente_nombre').value = "";
-        document.querySelector('#paciente_apellido').value = "";
-        document.querySelector('#paciente_dni').value = "";
-        document.querySelector('#fecha').value = "";
-    }
 
     (function() {
         let pathname = window.location.pathname;

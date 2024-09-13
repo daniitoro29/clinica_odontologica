@@ -8,8 +8,7 @@ document.getElementById("delete_turno_form").onsubmit = function(e) {
         return;
     }
 
-    // Configuración para la petición fetch
-    const url = `/turnos/${turnoId}`;
+    const url = '/turnos/' + turnoId;
     const settings = {
         method: 'DELETE',
         headers: {
@@ -17,15 +16,8 @@ document.getElementById("delete_turno_form").onsubmit = function(e) {
         }
     };
 
-    // Enviar la solicitud para eliminar el turno
     fetch(url, settings)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("No se pudo eliminar el turno.");
-            }
-            return response.json();
-        })
-        .then(data => {
+        .then(() => {
             const successAlert = `
                 <div class="alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>
